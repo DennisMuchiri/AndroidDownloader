@@ -82,6 +82,12 @@ public final class DefaultDownloadDBController implements DownloadDBController {
             downloadInfo.setDownloadThreadInfos(downloadThreads);
 
         }
+
+        try {
+            cursor.close();
+        } catch (Exception xx) {
+            xx.printStackTrace();
+        }
         return downloads;
     }
 
@@ -96,6 +102,11 @@ public final class DefaultDownloadDBController implements DownloadDBController {
             DownloadInfo downloadInfo = new DownloadInfo();
             downloads.add(downloadInfo);
             inflateDownloadInfo(cursor, downloadInfo);
+        }
+        try {
+            cursor.close();
+        } catch (Exception xx) {
+            xx.printStackTrace();
         }
         return downloads;
     }
